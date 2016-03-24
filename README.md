@@ -1,4 +1,4 @@
-# percentagebar
-simple ASCII percentage bar indicator in bash
+# Storage Alert Automation tool
 
-I needed to automate alert emails 
+Designed to update users on storage pools automatically via email. Uses a simple ASCII percentage bar indicator generated in bash and some automated min max alerting. 
+
