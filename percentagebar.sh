@@ -9,6 +9,21 @@ LENGTH=$2
 i=0;
 z=1000; 
 
+
+# check variables were passed to script or return help
+
+if [ $# != 2 ] 
+then
+   echo " "
+   echo "Error: Please pass the percentage full and the desired length:"
+   echo " " 
+   echo "$ percentagebar 25 25"
+   echo "[=======___________________] 25% Full"
+   echo " " 
+   exit 1;
+fi
+
+
 ## Do some math to get around floating point 
 
 FIXEDPERFULL=$(echo "scale = 1; (10*$PERCENT)" | bc );
@@ -32,3 +47,6 @@ done
 printf "] ";
 
 echo $PERCENT"% Full";
+
+exit 0;
+
