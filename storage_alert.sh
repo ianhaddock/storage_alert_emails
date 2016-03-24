@@ -1,18 +1,22 @@
 #!/bin/sh 
-# hacked by Ian haddock August 19, 2014 
-# puts together the weekly file storage check email
+#Ian haddock August 19, 2014 
+#This script is run by TypeIt4Me in my email client to generate the weekly file storage check email
 
-# check if drives are mounted, if not, mount drives, tbd
+#alert variables 
 
-# set variables 
 WARNFULL=85
 MAXFULL=95
 BARLENGTH=40
+
+#storage devices
+
 MEDIA=$(df -H | grep "WCMO_Media");
 DELIVERY=$(df -H | grep WCMO_Delivery);
 
+# TBD: check if drives are mounted, if not, mount drives
 
-# starts the email 
+# start the email 
+
 echo " " 
 echo "Hello, weekly stats:"
 echo "" 
@@ -22,12 +26,14 @@ echo $DELIVERY | awk '{print $9" --- "$4" free of "$2"."}';
 CURRENTFULL=$(df -H | grep WCMO_Delivery | awk '{print $5+0}');
 ~/Dropbox/Scripts/percentfull.sh $CURRENTFULL $BARLENGTH
 
-if [ $CURRENTFULL -gt $WARNFULL ]; then
+if [ $CURRENTFULL -gt $WARNFULL ]
+then
 	echo "\n*WARNING* Free space below threshold. Please clear space.\n"
-fi;
-if [ $CURRENTFULL -gt $MAXFULL ]; then
+fi
+if [ $CURRENTFULL -gt $MAXFULL ]
+then
 	echo "*\nCRITICAL* Free space below minimum. Please clear space. \n"
-fi;
+fi
 
 echo "";
 
@@ -42,9 +48,11 @@ if [ $CURRENTFULL -gt $MAXFULL ]; then
 fi;
 
 echo "" 
-# I'm still working on getting DIVArchive reports
+
+# TBD: get access to DIVArchive API to pull storage report
+
 echo "Front Porch:"
-echo " * SOME Tb Free"
+echo " * ENTER-VALUE-HERE Tb Free"
 echo "" 
 echo "Maintenance:"
 echo "* CatDV Worker Node restarted"
