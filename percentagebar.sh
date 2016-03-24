@@ -1,5 +1,5 @@
 #!/bin/sh 
-# hacked by Ian haddock August 23, 2014
+# by Ian haddock August 23, 2014
 # pass 2 variables - percent and length - and output a ASCII meter bar
 
 ## Input Variables 
@@ -49,4 +49,5 @@ printf "] ";
 echo $PERCENT"% Full";
 
 exit 0;
+
 
